@@ -1,0 +1,67 @@
+Inheritance in object-oriented PHP :
+One of the main advantages of object-oriented programming is the ability to reduce code duplication with inheritance.
+Code duplication occurs when a programmer writes the same code more than once, a problem that inheritance strives to
+solve. In inheritance, we have a parent class with its own methods and properties, and a child class (or classes)
+that can use the code from the parent. By using inheritance, we can create a reusable piece of code that we write
+only once in the parent class, and use again as much as we need in the child classes.
+
+Standard syntax:
+The child class can make use of all the non-private methods and properties that it inherits from the parent class.
+This allows us to write the code only once in the parent, and then use it in both the parent and the child classes.
+
+class Parent {
+  // The parent’s class code
+}
+
+class Child extends Parent {
+  // The  child can use the parent's class code
+}
+
+
+How can a child class have its own methods and properties?
+
+Just as a child class can use the properties and methods of its parent class, it can have properties and methods of
+its own as well. However, while a child class can use the code it inherited from the parent, the parent class is not
+allowed to use the child class’s code.
+
+In the example given below, we will add to the child class some code of its own by adding the $style property as
+well as the driveItWithStyle() method:
+
+
+The protected access control modifier:
+
+When we declare a property or a method as protected, we can approach it from both the parent and the child classes.
+
+In a previous tutorial, we learned that we can use the public access modifier to allow access to a class’s methods
+and properties from both inside and outside the class. We also learned that those methods and properties that are
+private can only be used from inside the class.
+
+In this tutorial, we will learn about a third modifier - the protected modifier, which allows code usage from both
+inside the class and from its child classes.
+
+The first example demonstrates what might happen when we declare the $model property in the parent as private,
+but still try to access it from its child class.
+
+
+How to override the parent’s properties and methods in the child class?
+
+In the same way that the child class can have its own properties and methods, it can override the properties and
+methods of the parent class. When we override the class’s properties and methods, we rewrite a method or property
+that exists in the parent again in the child, but assign to it a different value or code.
+
+In the example given below, we create a hello() method in the parent class that returns the string "beep" and
+override it in the child class with a method by the same name that returns a different string, "Halllo".
+
+
+How to prevent the child class from overriding the parent’s methods?
+
+In order to prevent the method in the child class from overriding the parent’s methods, we can prefix the method in
+the parent with the final keyword.
+In the example given below, we declare the hello() method in the parent as final, but still try to override it
+in the child class. What do you think might happen if we try to override a method that was declared as final? would
+Result in Fatal error: Cannot override final method Car::hello()
+
+Since we declared the hello method as final in the parent, we cannot override the method in the child class.
+
+
+We use inheritance in order to reduce code duplication by using code from the parent class in the child classes.
