@@ -1,0 +1,12 @@
+What is getter and setters
+'Getters' and 'Setters' are object methods that allow you to control access to a certain class variables / properties.
+Sometimes, these functions are referred to as 'mutator methods'. A 'getter' allows to you to retrieve or 'get' a given
+property. A 'setter' allows you to 'set' the value of a given property.
+
+
+Why use getters and setters? What is the point?
+The getters and setters that we created in our Person class above are pretty pointless as they merely provide access to our private
+properties. Beyond that, they don’t do anything.
+However, what if we wanted to add a layer of validation to prevent our object from being misused? For example, what if we wanted to make
+sure that the person’s $name variable is a string variable and not something else? Well, we can simply add that layer of validation
+to our setter method
