@@ -1,0 +1,63 @@
+What are Interfaces?
+
+Interfaces resemble abstract classes in that they include abstract methods that the programmer must define in the
+classes that inherit from the interface. In this way, interfaces contribute to code organization because they commit
+the child classes to abstract methods that they should implement. The use of interfaces becomes very helpful when we
+work in a team of programmers and want to ensure that all the programmers write the methods that they should work on,
+ or even in the case of a single programmer that wants to commit himself to write certain methods in the child
+classes.
+An interface commits its child classes to abstract methods that they should implement.
+
+How to declare and implement an interface?
+
+We declare an interface with the interface keyword and, the class that inherits from an interface with the implements
+keyword.
+
+General Syntax:
+interface interfaceName {
+  // abstract methods
+}
+
+class Child implements interfaceName {
+  // defines the interface methods and may have its own code
+}
+
+Interfaces, like abstract classes, include abstract methods and constants. However, unlike abstract classes,
+interfaces can have only public methods, and cannot have variables.
+The classes that implement the interfaces must define all the methods that they inherit from the interfaces,
+including all the parameters.
+
+Can we implement more than one interface in the same class?
+
+We can implement a number of interfaces in the same class.
+
+We can implement a number of interfaces in the same class, and so circumvent the law that prohibits the inheritance
+from more than one parent class. In order to demonstrate multiple inheritance from different interfaces, we create
+another interface.
+
+What are the differences between abstract classes and interfaces?
+
+We saw that abstract classes and interfaces are similar in that they provide abstract methods that must be
+implemented in the child classes. However, they still have the following differences:
+
+Interfaces can include abstract methods and constants, but cannot contain concrete methods and variables.
+All the methods in the interface must be in the public visibility scope.
+A class can implement more than one interface, while it can inherit from only one abstract class.
+
+PRIMARY PURPOSES OF AN INTERFACE:
+
+- Interfaces allow you to define/create a common structure for your classes – to set a standard for objects.
+- Interfaces solves the problem of single inheritance – they allow you to inject ‘qualities’ from multiple sources.
+- Interfaces provide a flexible base/root structure that you don’t get with classes.
+- Interfaces are great when you have multiple coders working on a project – you can set up a loose structure for
+  programmers to follow and let them worry about the details.
+
+
+WHEN SHOULD YOU MAKE A CLASS AND WHEN SHOULD YOU MAKE AN INTEFACE?
+
+- If you have a class that is never directly instantiated in your program, this is a good candidate for an interface.
+  In other words, if you are creating a class to only serve as the parent to other classes, it should probably be made
+  into an interface.
+- When you know what methods a class should have but you are not sure what the details will be.
+- When you want to quickly map out the basic structures of your classes to serve as a template for others to follow
+  * keeps the code-base predictable and consistent.
