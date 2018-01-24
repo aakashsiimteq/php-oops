@@ -1,0 +1,26 @@
+Abstract classes and methods
+We use abstract classes when we want to commit the programmer (either oneself or someone else) to write a certain
+class method, but we are only sure about the name of the method, and not the details of how it should be written.
+To take an example, circles, rectangles, octagons, etc. may all look different, but are all 2D shapes nonetheless,
+and thus all possess the traits of area and circumference. So, it makes perfect sense to group the code that they
+have in common into one parent class. In this parent class, we would have the two properties of area and circumference
+, and we might even consider adding a method that calculates the area (which might be problematic since different
+shapes require different calculations). In these kinds of cases, when we need to commit the child classes to certain
+methods that they inherit from the parent class but we cannot commit about the code that should be used in the methods
+we use abstract classes.
+
+We use abstract classes and methods when we need to commit the child classes to certain methods that they inherit
+from the parent class but we cannot commit about the code that should be written inside the methods.
+
+An abstract class is a class that has at least one abstract method. Abstract methods can only have names and
+arguments, and no other code. Thus, we cannot create objects out of abstract classes. Instead, we need to create
+child classes that add the code into the bodies of the methods, and use these child classes to create objects.
+
+How to declare classes and methods as abstract?
+In order to declare a class as abstract, we need to prefix the name of the class with the abstract keyword.
+
+Syntax:
+  abstract class Car { }
+
+We put the abstract methods that are also declared with the abstract keyword within the abstract class.
+Abstract methods inside an abstract class don't have a body, only a name and parameters inside parentheses.
