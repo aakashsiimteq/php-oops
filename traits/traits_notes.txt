@@ -1,0 +1,90 @@
+What are PHP Traits?
+A Trait is simply a group of methods that you want include within another class. A Trait, like an abstract class,
+cannot be instantiated on it’s own.
+
+How do Traits work?
+As you can see from the example above, both the Post and the Comment objects have the share() method available
+despite not having that method defined.
+A Trait is basically just a way to “copy and paste” code during run time.
+This means the Trait is copied in to the Post and Comment classes so when you instantiate a new instance,
+the share() method code will be available.
+
+
+How are Traits different to Abstract classes?
+A Trait is different to an Abstract class (What are Abstract classes?) because they do not rely on inheritance.
+Imagine if the Post and the Comment class had to inherit from a AbstractSocial class. We are most likely going
+to want to do more than just share posts and comments on social media websites, so we’ll probably end up with
+a complicated inheritance tree like this:
+  class AbstractValidate extends AbstractCache {}
+  class AbstractSocial extends AbstractValidate {}
+  class Post extends AbstractSocial {}
+
+This complicated inheritance is pretty nasty, but it also adds complication when a simpler object does not have a
+similar inherence structure. For example, if we had a Message object that shouldn’t allow social sharing, then this
+object would require a slightly different inheritance structure.
+
+
+How are Traits different to Interfaces?
+Traits kind of look a lot like Interfaces. Both Traits and interfaces are usually simple, concise and not much use
+without an actual implemented class. However the difference between the two is important.
+An interface is a contract that says “this object is able to do this thing”, whereas a Trait is giving the object
+the ability to do the thing.
+
+What are the benefits of Traits?
+The benefit of using Traits is that you reduce code duplication whilst preventing complicated class inheritance that
+might not make sense within the context of your application.
+
+This allows you to define simple Traits that are clear and concise and then mix in that functionality where
+appropriate.
+
+What are the drawbacks of Traits?
+However with that being said, there are possible drawbacks when using Traits too.
+
+Traits make it very easy to write bloated classes that have too much responsibility. A Trait is essentially a way
+to “copy and paste” code between classes. By having a way to very simply add another group of methods to a class,
+it’s very easy to diverge from the single responsibility principle.
+
+Other drawbacks to using Traits are not being able to see all the methods of a class when looking at the source
+code as well as method conflicts or duplication of logic.
+
+I think Traits, when used correctly, are a fantastic tool to have at our disposal. However, Traits can also be
+crutch for lazy programming. It’s very easy to just add a Trait to solve your immediate problem. Often composition
+is the better approach over inheritance or using a Trait.
+
+What are typical situations for using Traits?
+So what would be a typical situation when using a Trait would be a good idea?
+Well, I think Traits are an excellent way to reuse a chunk of code between a set of similar classes that should not
+inherit from the same abstract class.
+Using the social application from earlier, imagine we had objects for Post, Photo, Note, Message and Link. For the
+most part, these objects are fairly interchangeable within our system as they are typically created and interacted with between users.
+However, Post, Photo, Note and Link are all objects that are publicly shareable between users, whereas Message
+objects are private messages that are not made public.
+The Post, Photo, Note and Link objects all implement a Shareable interface:
+
+
+What is a real life example of using Traits?
+When you first encounter Traits as another tool at your disposal, it can be difficult to know whether a situation
+should really call for using a Trait, or one of the many other possible solutions to solving this particular problem.
+
+When you face this situation, I think it’s a really good idea to look to the world of Open Source to see how others
+have used this particular technique.
+
+In my opinion, an Open Source project that makes good use of Traits is Laravel’s Cashier package.
+
+The Cashier package adds functionality to your Eloquent models to make it really easy to manage subscriptions
+within your SaaS application.
+
+However in order to add functionality to your existing models, you end up facing a predicament.
+
+The first option is to simply implement the methods yourself by copy and pasting the method examples from the
+documentation. This isn’t a good solution because you might introduce bugs by copying the code incorrectly and
+whenever the Cashier package is updated you will have to go through all of your models and update your duplicated
+code.
+
+A second option is to extend the Cashier object to inherit the methods that you need. This is also a bad solution
+because what happens if you want to add methods from a package that adds validation to your models? You will end up
+with a complicated lineage of inheritance that will make your code bloated and confusing when you, your colleagues,
+or your future self return to this code in the future.
+
+Instead, the Cashier packages provides a Trait that allows you to add the functionality to any of models without
+duplicating the code yourself or having a nasty inheritance lineage

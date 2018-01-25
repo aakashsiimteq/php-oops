@@ -1,0 +1,81 @@
+What is a Lambda?
+A Lambda is an anonymous function that can be assigned to a variable or passed to another function as an argument. If you are familiar with other programming languages like Javascript or Ruby, you will be very familiar with anonymous functions.
+
+Anonymous functions
+An anonymous function is simply a function with no name.
+For example, to create a regular function, you might write something like this:
+// Regular function
+function greeting () {
+  return "Hello world";
+}
+
+You can then simply call this function like this:
+echo greeting();
+// Returns "Hello world"
+
+An anonymous function has no name so you would define it like this:
+// Anonymous function
+function () {
+  return "Hello world";
+}
+
+Using Lambdas
+Because the function has no name, you can’t call it like a regular function. Instead you must either assign it to a variable or pass it to another function as an argument.
+To so use the anonymous function, we assign it to a variable and then call that variable as a function.
+
+Why would you want to use a Lambda?
+Lambdas are useful because they are throw away functions that you can use once. Often, you will need a function to do a job, but it doesn't make sense to have it within the global scope or to even make it available as part of your code. Instead of having a function used once and then left lying around, you can use a Lambda instead.
+
+Of course, you have been able to use the create_function function in PHP.
+
+// Create a user
+$user = "Philip";
+
+// Create a Closure
+$greeting = function() use ($user) {
+  echo "Hello $user";
+};
+
+// Greet the user
+$greeting(); // Returns "Hello Philip"
+
+As you can see above, the Closure is able to access the $user variable. because it was declared in the use clause of the Closure function definition.
+
+If you were to alter the $user variable within the Closure, it would not effect the original variable. To update the original variable, we can append an ampersand. An ampersand before a variable means this is a reference and so the original variable is also updated.
+
+For example:
+// Set counter
+$i = 0;
+// Increase counter within the scope
+// of the function
+$closure = function () use ($i){ $i++; };
+// Run the function
+$closure();
+// The global count hasn't changed
+echo $i; // Returns 0
+
+// Reset count
+$i = 0;
+// Increase counter within the scope
+// of the function but pass it as a reference
+$closure = function () use (&$i){ $i++; };
+// Run the function
+$closure();
+// The global count has increased
+echo $i; // Returns 1
+
+
+you can access variables outside the scope of the Closure by using the use clause
+
+Real life usage
+So we’ve established that Lambdas and Closures are anonymous functions that can be used as throw away bits of functionality that don’t pollute the global namespace and are good to use as part of a callback.
+
+A popular example of the use of these types of functions is in routing requests within modern frameworks. Laravel for example, allows you to do the following:
+
+Route::get('user/(:any)', function($name){
+  return "Hello " . $name;
+});
+
+The code above simply matches a URL like /user/philip and returns a greeting.
+
+This is a very basic example, but it highlights how a Closure can be utilised in a very useful situation.
