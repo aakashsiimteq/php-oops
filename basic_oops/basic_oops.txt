@@ -1,0 +1,107 @@
+What is an object?
+In the real world, the word “object” is used to describe something that can be seen or touched. It is a thing. i.e. A car, a dog, a light bulb, a person or a flower pot. Take a moment to look at the objects that surround you. Look at your monitor, the cup of coffee on your desk or the smart phone that is resting in your hand. These are all objects.
+
+In the world of programming, objects are “things” that have attributes and behaviors, just like any real-life objects. Let us take the example of a car:
+
+A car has the following attributes:
+
+Color.
+Length and width.
+Petrol or diesel.
+Engine size.
+Number of doors.
+Automatic or manual.
+These are all attributes. In some cases, these attributes will have an effect on the behavior of the car. For example: A car’s engine size may have an impact on its speed.
+
+What about the car’s behaviors? i.e. What can a car do?
+
+Start.
+Drive.
+Stop.
+Change gears.
+In PHP, attributes are called properties and behaviors are referred to as class functions or methods. To sum it up: Property = attribute. Function = behavior.
+
+
+
+What is a class?
+This is a bit of a difficult question to answer, simply because there are a number of caveats involved. However; because this is a beginner tutorial, I’m just going to offer up a simple explanation:
+
+A class is a blueprint for an object. i.e. It defines what an object is (attributes / properties) and it defines what an object can do (behaviors / functions).
+
+Think of it as an architectural drawing!
+
+Creating a class in PHP.
+If we want to create our own custom objects, we will need to learn how to create a basic class:
+
+<?php
+
+class Car{
+
+    public $color = 'Red';
+
+    public function drive(){
+       //Code that drives the car is placed here.
+    }
+
+}
+
+
+If you look at the PHP code above, you’ll see that I’ve created a class called “Car”. There are two things that you should notice here:
+
+I have an attribute (aka, a class property) called $color.
+I have a class function called drive.
+In this case, drive is a behavior and $color is an attribute. As you can see, I’ve set the $color property to red.
+
+
+Creating a PHP object.
+Now, what if we want to create an object out of this class? Well, we will need to instantiate it.
+
+<?php
+
+//Make sure that our class file has been included.
+include 'classes/Car.php';
+
+//Create our car object by creating an "instance" out of the class.
+$car = new Car();
+
+Remember: Class names are case sensitive!
+
+When we created our object, it “took on” the functions that we created in our class file. i.e. Those functions became actions that our object can carry out. In this case, we just created an empty function called drive, for the sake of illustrating the point.
+
+What if we want to add another behavior to our object? I mean, objects can have multiple behaviors, can’t they?
+
+Objects in the world of software.
+Obviously, in the world of software, we don’t create cars or coffee mugs, etc. Instead, we create “things” such as users and blog posts. For example, a “user” on a website can have the following attributes:
+
+Username.
+Email Address.
+A “user” could have the following functions / behaviors:
+
+Login.
+Logout.
+Post a status on their “home feed”.
+So what could a User class look like in PHP?
+<?php
+
+class User{
+
+    public $username;
+
+    public $emailAddress;
+
+    public function login($username, $password){
+        //Login code goes here.
+    }
+
+    public function logout(){
+        //Logout code goes here.
+    }
+
+    public function postStatus($status){
+        //Insert status into database, etc.
+    }
+
+}
+As you can see, I’ve created an extremely simple class called User. It has two properties: $username and $emailAddress. It has three functions / behaviors called “login”, “logout” and “postStatus”, which we can call as soon as we instantiate the class and create a user object.
+
+Now, what if we want to set the user’s email address? Well, we can create a function called setEmail, which will modify our $emailAddress property:
