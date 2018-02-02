@@ -1,0 +1,5 @@
+The __construct() method is automatically called when the object is first created. This means you can inject parameters and dependencies to set up the object.
+
+When an object is destroyed the __destruct() method is fired. Again, as with the __construct() method, this is not something you have to trigger as PHP will take care of it for you.
+
+The destruct method will allow you to cleanup anything that shouldn’t be around once the object has been destroyed.To be honest you don’t really see much of the __destruct() method. PHP is not really the type of language that you would be using for long running processes so I think for the most part you don’t really need to ever clean up anything using the __destruct() method. The lifecycle of a PHP request is so short, actually implementing the __destruct() method is probably more hassle than it’s worth
