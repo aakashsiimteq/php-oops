@@ -1,0 +1,6 @@
+the properties on an object will be set to protected and so attempting to access a property in this way will cause an error.
+
+The __get() method will listen for requests for properties that are not public properties:
+The __get() method accepts the name of the property you were looking for as an argument. In the code above, first I check to see if the property exists on the current object. If it does, I can return it dynamically from the object.
+
+You don’t have to actually call the __get() method as PHP will automatically call it for you when you try to access a property that is not one of the object’s public properties.
